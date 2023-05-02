@@ -28,3 +28,11 @@ Gympass style app.
 - [ ] The application data must be persisted in a PostgreSQL database;
 - [ ] All data lists must be paginated with 20 items per page;
 - [ ] User must be identified by a JWT (JSON Web Token)
+
+
+
+
+## others
+
+### docker
+``docker run --name rocketseat-nodejs-03-api-solid -e POSTGRESQL_USERNAME=docker -e POSTGRESQL_PASSWORD=docker -e POSTGRESQL_DATABASE=apisolid -p 5432:5432 bitnami/postgresql:latest``
