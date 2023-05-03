@@ -35,4 +35,11 @@ Gympass style app.
 ## others
 
 ### docker
-``docker run --name rocketseat-nodejs-03-api-solid -e POSTGRESQL_USERNAME=docker -e POSTGRESQL_PASSWORD=docker -e POSTGRESQL_DATABASE=apisolid -p 5432:5432 bitnami/postgresql:latest``
+* both work to start: 
+  * create from zero: ``docker run --name rocketseat-nodejs-03-api-solid -e POSTGRESQL_USERNAME=docker -e POSTGRESQL_PASSWORD=docker -e POSTGRESQL_DATABASE=apisolid -p 5432:5432 bitnami/postgresql:latest``
+  * use file [docker-compose.yml](docker-compose.yml) ``docker compose up -d`` or stop: `docker compose stop`
+
+### prisma
+* use to create db ``npx prisma migrate dev``. 
+* The class use files: [schema.prisma](prisma%2Fschema.prisma)
+* show db: ``npx prisma studio``
