@@ -1,0 +1,49 @@
+import {
+	ICheckIn,
+	ICheckInCreateInput,
+	ICheckInsRepository,
+} from '@/repositories/check-ins-repository.interface'
+import { randomUUID } from 'node:crypto'
+import dayjs from 'dayjs'
+
+export class InMemoryCheckInsRepository implements ICheckInsRepository {
+	list: ICheckIn[] = []
+
+	async create(data: ICheckInCreateInput): Promise<ICheckIn> {
+		const checkIn: ICheckIn = {
+			id: randomUUID(),
+			user_id: data.user_id,
+			gym_id: data.gym_id,
+			create_at: new Date(),
+			validated_at: data.validated_at
+				? new Date(data.validated_at)
+				: data.validated_at,
+		}
+
+		this.list.push(checkIn)
+
+		return checkIn
+	}
+
+	async findByUserIdOnDate(
+		userId: string,
+		date: Date,
+	): Promise<ICheckIn | null> {
+		const startDay = dayjs(date).startOf('date')
+		const endDay = dayjs(date).endOf('date')
+
+		const checkInOnSameDate = this.list.find((checkIn) => {
+			const checkInDate = dayjs(checkIn.create_at)
+			const isOnSameDate =
+				checkInDate.isAfter(startDay) && checkInDate.isBefore(endDay)
+
+			return checkIn.user_id === userId && isOnSameDate
+		})
+
+		if (!checkInOnSameDate) {
+			return null
+		}
+
+		return checkInOnSameDate
+	}
+}

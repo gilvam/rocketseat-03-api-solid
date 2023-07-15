@@ -25,6 +25,8 @@ module.exports = {
 		],
 		indent: ['error', 'tab'],
 		'no-tabs': 'off',
+		'no-useless-constructor': 'off',
+		'@typescript-eslint/no-useless-constructor': 'error',
 	},
 	settings: {
 		'import/parsers': {

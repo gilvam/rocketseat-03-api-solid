@@ -5,7 +5,7 @@ import {
 } from '@/repositories/users-repository.interface'
 
 export class InMemoryUsersRepository implements IUsersRepository {
-	userList: IUser[] = []
+	list: IUser[] = []
 
 	async create(data: IUserCreateInput): Promise<IUser> {
 		const user: IUser = {
@@ -16,12 +16,16 @@ export class InMemoryUsersRepository implements IUsersRepository {
 			create_at: new Date(),
 		}
 
-		this.userList.push(user)
+		this.list.push(user)
 
 		return user
 	}
 
+	async findById(id: string): Promise<IUser | null> {
+		return this.list.find((it) => it.id === id) || null
+	}
+
 	async findByEmail(email: string): Promise<IUser | null> {
-		return this.userList.find((it) => it.email === email) || null
+		return this.list.find((it) => it.email === email) || null
 	}
 }
