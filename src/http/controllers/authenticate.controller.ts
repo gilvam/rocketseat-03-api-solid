@@ -1,8 +1,7 @@
 import { z } from 'zod'
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { UsersRepository } from '@/repositories/users.repository'
-import { AuthenticateUseCase } from '@/use-cases/authenticate.use-case'
 import { InvalidCredetialsError } from '@/use-cases/errors/invalid-credentials-error'
+import { makeAuthenticateUseCase } from '@/use-cases/factories/make-authenticate-use-case'
 
 export async function authenticateController(
 	request: FastifyRequest,
@@ -15,8 +14,8 @@ export async function authenticateController(
 	const { email, password } = authenticateBodySchema.parse(request.body)
 
 	try {
-		const usersRepository = new UsersRepository()
-		const authenticateUseCase = new AuthenticateUseCase(usersRepository)
+		const authenticateUseCase = makeAuthenticateUseCase()
+
 		await authenticateUseCase.execute({ email, password })
 	} catch (err) {
 		if (err instanceof InvalidCredetialsError) {
