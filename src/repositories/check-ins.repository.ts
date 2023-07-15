@@ -11,10 +11,14 @@ export class CheckInsRepository implements ICheckInsRepository {
 		return checkIn
 	}
 
-	// async findByUserIdOnDate(
-	// 	userId: string,
-	// 	date: Date,
-	// ): Promise<ICheckIn | null> {
-	// 	return null
-	// }
+	async findByUserIdOnDate(
+		userId: string,
+		date: Date,
+	): Promise<ICheckIn | null> {
+		return null
+	}
+
+	async findManyByUserId(userId: string, page: number): Promise<ICheckIn[]> {
+		return []
+	}
 }

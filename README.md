@@ -8,7 +8,7 @@ Gympass style app.
 - [x] It must be possible to authenticate;
 - [x] It must be possible to obtain the profile of a logged in user;
 - [ ] It must be possible to obtain the number of check-ins performed by the logged in user;
-- [ ] It must be possible for the user to obtain his check-in history;
+- [x] It must be possible for the user to obtain his check-in history;
 - [ ] It must be possible for the user to search for nearby gyms;
 - [ ] It must be possible for the user to search for gyms by name;
 - [x] It must be possible for the user to check-in at a gym;
@@ -26,7 +26,7 @@ Gympass style app.
 ## NFRs (non functional requirements)
 - [x] User's password must be encrypted;
 - [x] The application data must be persisted in a PostgreSQL database;
-- [ ] All data lists must be paginated with 20 items per page;
+- [x] All data lists must be paginated with 20 items per page;
 - [ ] User must be identified by a JWT (JSON Web Token)
 
 

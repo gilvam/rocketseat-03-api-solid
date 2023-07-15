@@ -17,7 +17,7 @@ export class InMemoryCheckInsRepository implements ICheckInsRepository {
 			create_at: new Date(),
 			validated_at: data.validated_at
 				? new Date(data.validated_at)
-				: data.validated_at,
+				: new Date(),
 		}
 
 		this.list.push(checkIn)
@@ -45,5 +45,13 @@ export class InMemoryCheckInsRepository implements ICheckInsRepository {
 		}
 
 		return checkInOnSameDate
+	}
+
+	async findManyByUserId(userId: string, page: number): Promise<ICheckIn[]> {
+		return (
+			this.list
+				.filter((it) => it.user_id === userId)
+				.slice((page - 1) * 20, page * 20) || []
+		)
 	}
 }
