@@ -6,4 +6,5 @@ export interface IGym extends Gym {}
 export interface IGymsRepository {
 	create(data: IGymCreateInput): Promise<IGym>
 	findById(id: string): Promise<IGym | null>
+	searchMany(query: string, page: number): Promise<IGym[] | []>
 }

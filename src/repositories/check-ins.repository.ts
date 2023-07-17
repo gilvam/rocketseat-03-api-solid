@@ -3,7 +3,7 @@ import {
 	ICheckIn,
 	ICheckInCreateInput,
 	ICheckInsRepository,
-} from '@/repositories/check-ins-repository.interface'
+} from '@/repositories/interfaces/check-ins-repository.interface'
 
 export class CheckInsRepository implements ICheckInsRepository {
 	async create(data: ICheckInCreateInput): Promise<ICheckIn> {

@@ -2,7 +2,7 @@ import {
 	IGym,
 	IGymCreateInput,
 	IGymsRepository,
-} from '@/repositories/gyms-repository.interface'
+} from '@/repositories/interfaces/gyms-repository.interface'
 import { randomUUID } from 'node:crypto'
 import { Prisma } from '@prisma/client'
 
@@ -28,7 +28,11 @@ export class InMemoryGymsRepository implements IGymsRepository {
 		return this.list.find((it) => it.id === id) || null
 	}
 
-	async findByEmail(email: string): Promise<IGym | null> {
-		return this.list.find((it) => it.email === email) || null
+	async searchMany(query: string, page: number): Promise<IGym[] | []> {
+		return (
+			this.list
+				.filter((it) => it.title.includes(query))
+				.slice((page - 1) * 20, page * 20) || []
+		)
 	}
 }

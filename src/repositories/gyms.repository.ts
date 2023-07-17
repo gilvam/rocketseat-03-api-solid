@@ -3,7 +3,7 @@ import {
 	IGym,
 	IGymCreateInput,
 	IGymsRepository,
-} from '@/repositories/gyms-repository.interface'
+} from '@/repositories/interfaces/gyms-repository.interface'
 
 export class GymsRepository implements IGymsRepository {
 	async create(data: IGymCreateInput): Promise<IGym> {
@@ -14,5 +14,9 @@ export class GymsRepository implements IGymsRepository {
 	async findById(id: string): Promise<IGym | null> {
 		const gym = await prisma.gym.findUnique({ where: { id } })
 		return gym
+	}
+
+	async searchMany(query: string, page: number): Promise<IGym[] | []> {
+		return []
 	}
 }

@@ -3,7 +3,7 @@ import {
 	IUser,
 	IUserCreateInput,
 	IUsersRepository,
-} from '@/repositories/users-repository.interface'
+} from '@/repositories/interfaces/users-repository.interface'
 
 export class UsersRepository implements IUsersRepository {
 	async create(data: IUserCreateInput): Promise<IUser> {

@@ -2,7 +2,7 @@ import {
 	ICheckIn,
 	ICheckInCreateInput,
 	ICheckInsRepository,
-} from '@/repositories/check-ins-repository.interface'
+} from '@/repositories/interfaces/check-ins-repository.interface'
 import { randomUUID } from 'node:crypto'
 import dayjs from 'dayjs'
 
