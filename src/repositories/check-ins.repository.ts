@@ -10,6 +10,14 @@ export class CheckInsRepository implements ICheckInsRepository {
 		return prisma.checkIn.create({ data })
 	}
 
+	async saveUpdate(checkIn: ICheckIn): Promise<ICheckIn> {
+		return {} as any
+	}
+
+	async findById(id: string): Promise<ICheckIn | null> {
+		return null
+	}
+
 	async findByUserIdOnDate(
 		userId: string,
 		date: Date,

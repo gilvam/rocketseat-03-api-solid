@@ -1,7 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { InMemoryGymsRepository } from '@/repositories/in-memory/in-memory-gyms.repository'
 import { SearchGymUseCase } from '@/use-cases/search-gym.use-case'
-import { Decimal } from 'prisma/prisma-client/runtime'
 
 let checkInsRepository: InMemoryGymsRepository
 let sut: SearchGymUseCase
@@ -51,13 +50,13 @@ describe('Search Gyms Use Case', () => {
 			})
 		}
 
-		const { gym } = await sut.execute({
+		const { gyms } = await sut.execute({
 			query: 'Javascript',
 			page: 2,
 		})
 
-		expect(gym).toHaveLength(2)
-		expect(gym).toEqual([
+		expect(gyms).toHaveLength(2)
+		expect(gyms).toEqual([
 			expect.objectContaining({ gym_id: 'Javascript Gym 21' }),
 			expect.objectContaining({ gym_id: 'Javascript Gym 22' }),
 		])
