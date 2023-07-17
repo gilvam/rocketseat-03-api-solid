@@ -7,8 +7,7 @@ import {
 
 export class CheckInsRepository implements ICheckInsRepository {
 	async create(data: ICheckInCreateInput): Promise<ICheckIn> {
-		const checkIn = await prisma.checkIn.create({ data })
-		return checkIn
+		return prisma.checkIn.create({ data })
 	}
 
 	async findByUserIdOnDate(
@@ -20,5 +19,9 @@ export class CheckInsRepository implements ICheckInsRepository {
 
 	async findManyByUserId(userId: string, page: number): Promise<ICheckIn[]> {
 		return []
+	}
+
+	async countByUserId(userId: string): Promise<number> {
+		return 0
 	}
 }
