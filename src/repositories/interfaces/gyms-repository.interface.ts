@@ -7,4 +7,5 @@ export interface IGymsRepository {
 	create(data: IGymCreateInput): Promise<IGym>
 	findById(id: string): Promise<IGym | null>
 	searchMany(query: string, page: number): Promise<IGym[] | []>
+	findManyNearBy(latitude: number, longitude: number): Promise<IGym[] | []>
 }

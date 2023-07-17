@@ -5,6 +5,7 @@ import {
 } from '@/repositories/interfaces/gyms-repository.interface'
 import { randomUUID } from 'node:crypto'
 import { Prisma } from '@prisma/client'
+import { getDistanceBetweenTwoCoordinates } from '@/use-cases/utils/get-distance-between-two-coordinates'
 
 export class InMemoryGymsRepository implements IGymsRepository {
 	list: IGym[] = []
@@ -34,5 +35,23 @@ export class InMemoryGymsRepository implements IGymsRepository {
 				.filter((it) => it.title.includes(query))
 				.slice((page - 1) * 20, page * 20) || []
 		)
+	}
+
+	async findManyNearBy(
+		latitude: number,
+		longitude: number,
+	): Promise<IGym[] | []> {
+		const MAX_DISTANCE_GYM_KM = 10
+
+		return this.list.filter((it) => {
+			const distance = getDistanceBetweenTwoCoordinates(
+				{ latitude, longitude },
+				{
+					latitude: it.latitude.toNumber(),
+					longitude: it.longitude.toNumber(),
+				},
+			)
+			return distance < MAX_DISTANCE_GYM_KM
+		})
 	}
 }

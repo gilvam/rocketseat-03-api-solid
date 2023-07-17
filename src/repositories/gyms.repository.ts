@@ -19,4 +19,11 @@ export class GymsRepository implements IGymsRepository {
 	async searchMany(query: string, page: number): Promise<IGym[] | []> {
 		return []
 	}
+
+	async findManyNearBy(
+		latitude: number,
+		longitude: number,
+	): Promise<IGym[] | []> {
+		return []
+	}
 }
