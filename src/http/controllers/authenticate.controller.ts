@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { InvalidCredetialsError } from '@/use-cases/errors/invalid-credentials-error'
-import { makeAuthenticateUseCase } from '@/use-cases/factories/make-authenticate-use-case'
+import { MakeAuthenticateFactory } from '@/use-cases/factories/make-authenticate.factory'
 
 export async function authenticateController(
 	request: FastifyRequest,
@@ -14,7 +14,7 @@ export async function authenticateController(
 	const { email, password } = authenticateBodySchema.parse(request.body)
 
 	try {
-		const authenticateUseCase = makeAuthenticateUseCase()
+		const authenticateUseCase = new MakeAuthenticateFactory().build()
 
 		await authenticateUseCase.execute({ email, password })
 	} catch (err) {

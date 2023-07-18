@@ -6,7 +6,7 @@ import {
 import { prisma } from '@/lib/prisma'
 import dayjs from 'dayjs'
 
-export class PrismaUsersRepository implements ICheckInsRepository {
+export class PrismaCheckInsRepository implements ICheckInsRepository {
 	async create(data: ICheckInCreateInput) {
 		return prisma.checkIn.create({ data })
 	}
