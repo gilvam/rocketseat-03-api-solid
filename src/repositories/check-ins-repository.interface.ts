@@ -10,5 +10,5 @@ export interface ICheckInsRepository {
 	findById(id: string): Promise<ICheckIn | null>
 	findByUserIdOnDate(userId: string, date: Date): Promise<ICheckIn | null>
 	findManyByUserId(userId: string, page: number): Promise<ICheckIn[]>
-	countByUserId(userId: string): Promise<number>
+	countByUserId(id: string): Promise<number>
 }

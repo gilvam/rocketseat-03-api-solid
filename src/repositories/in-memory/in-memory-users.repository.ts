@@ -2,7 +2,7 @@ import {
 	IUser,
 	IUserCreateInput,
 	IUsersRepository,
-} from '@/repositories/interfaces/users-repository.interface'
+} from '@/repositories/users-repository.interface'
 
 export class InMemoryUsersRepository implements IUsersRepository {
 	list: IUser[] = []

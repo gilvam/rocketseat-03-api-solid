@@ -2,7 +2,7 @@ import {
 	IGym,
 	IGymCreateInput,
 	IGymsRepository,
-} from '@/repositories/interfaces/gyms-repository.interface'
+} from '@/repositories/gyms-repository.interface'
 import { randomUUID } from 'node:crypto'
 import { Prisma } from '@prisma/client'
 import { getDistanceBetweenTwoCoordinates } from '@/use-cases/utils/get-distance-between-two-coordinates'
