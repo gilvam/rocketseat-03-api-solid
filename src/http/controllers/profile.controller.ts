@@ -5,8 +5,6 @@ export async function profileController(
 	request: FastifyRequest,
 	reply: FastifyReply,
 ) {
-	await request.jwtVerify()
-
 	const getUserProfile = new MakeGetUserProfileFactory().build()
 
 	const { user } = await getUserProfile.execute({ userId: request.user.sub })
