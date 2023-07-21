@@ -16,7 +16,11 @@ export async function authenticateController(
 	try {
 		const authenticateUseCase = new MakeAuthenticateFactory().build()
 
-		await authenticateUseCase.execute({ email, password })
+		const { user } = await authenticateUseCase.execute({ email, password })
+
+		const token = await reply.jwtSign({}, { sign: { sub: user.id } })
+
+		return reply.status(200).send({ token })
 	} catch (err) {
 		if (err instanceof InvalidCredetialsError) {
 			return reply.status(400).send({ message: err.message })
@@ -24,6 +28,4 @@ export async function authenticateController(
 
 		throw err
 	}
-
-	return reply.status(200).send()
 }
