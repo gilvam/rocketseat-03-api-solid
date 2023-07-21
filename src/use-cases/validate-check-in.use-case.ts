@@ -1,5 +1,5 @@
 import { CheckIn } from '@prisma/client'
-import { CheckInsRepository } from '@/repositories/check-ins.repository'
+import { ICheckInsRepository } from '@/repositories/check-ins-repository.interface'
 import { ResourceNotFountError } from '@/use-cases/errors/resource-not-fount-error'
 import dayjs from 'dayjs'
 
@@ -12,7 +12,7 @@ interface IValidateCheckinUseCaseResponse {
 }
 
 export class ValidateCheckInUseCase {
-	constructor(private checkInsRepository: CheckInsRepository) {}
+	constructor(private checkInsRepository: ICheckInsRepository) {}
 
 	async execute({
 		checkInId,
