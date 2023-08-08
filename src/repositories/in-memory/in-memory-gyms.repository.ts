@@ -5,7 +5,7 @@ import {
 } from '@/repositories/gyms-repository.interface'
 import { randomUUID } from 'node:crypto'
 import { Prisma } from '@prisma/client'
-import { getDistanceBetweenTwoCoordinates } from '@/use-cases/utils/get-distance-between-two-coordinates'
+import { getDistanceBetweenTwoCoordinates } from '@/use-cases/_utils/get-distance-between-two-coordinates'
 
 export class InMemoryGymsRepository implements IGymsRepository {
 	list: IGym[] = []

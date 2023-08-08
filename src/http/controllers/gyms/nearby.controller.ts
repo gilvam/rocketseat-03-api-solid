@@ -7,8 +7,12 @@ export async function nearbyController(
 	reply: FastifyReply,
 ) {
 	const nearByGymsQuerySchema = z.object({
-		latitude: z.number().refine(() => (it: number) => Math.abs(it) >= 90),
-		longitude: z.number().refine(() => (it: number) => Math.abs(it) <= 180),
+		latitude: z.coerce
+			.number()
+			.refine(() => (it: number) => Math.abs(it) >= 90),
+		longitude: z.coerce
+			.number()
+			.refine(() => (it: number) => Math.abs(it) <= 180),
 	})
 	const { latitude, longitude } = nearByGymsQuerySchema.parse(request.query)
 
