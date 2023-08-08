@@ -8,6 +8,7 @@ import dayjs from 'dayjs'
 
 export class PrismaCheckInsRepository implements ICheckInsRepository {
 	async create(data: ICheckInCreateInput) {
+		data.validated_at = new Date()
 		return prisma.checkIn.create({ data })
 	}
 

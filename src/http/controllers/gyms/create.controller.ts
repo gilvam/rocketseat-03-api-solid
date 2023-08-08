@@ -17,8 +17,6 @@ export async function createController(
 	const { title, description, phone, latitude, longitude } =
 		createGymBodySchema.parse(request.body)
 
-	console.log(`createController request.body: `, request.body)
-
 	try {
 		const createGymUseCase = new MakeCreateGymFactory().build()
 		await createGymUseCase.execute({
